@@ -1,0 +1,14 @@
+index,key,label,type,unit,description
+1,I_index,Index,INTEGER,,Unique Identifier
+2,I_name,Name,STRING,,
+3,I_address,Address,STRING,,
+3,I_price,Price,DECIMAL_2,EUR,
+4,I_notary,Notary Fees,DECIMAL_2,EUR,
+5,I_ppd,PPP,DECIMAL_2,EUR,Privilège de Prèteur de Deniers
+6,I_works,Works,DECIMAL_2,EUR,
+7,I_initial,,DECIMAL_2,EUR,Initial Contribution
+8,I_rate,Rate,DECIMAL_2,PERCENT,
+9,I_years,Years,INTEGER,YEAR,
+10,I_area,Aree,DECIMAL_2,m2,
+11,I_rent,Rent,DECIMAL_2,EUR,
+12,I_propertyTax,Property Tax,DECIMAL_2,EUR,
