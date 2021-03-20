@@ -27,6 +27,7 @@ rm -f Pipfile Pipfile.lock
 ```sh
 pipenv install --python "${O_PYTHON_VERSION}"
 pipenv install "pandas==${O_PANDAS_VERSION}"
+pipenv install "numpy-financial==${O_NPFINANCIAL_VERSION}"
 ```
 ```sh
 pipenv check
