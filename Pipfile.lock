@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2eacdb2f3a6c2c7b54c38169a042446d8e6e20bb69d5b6f52ac7d70475d638a5"
+            "sha256": "f6ac0a2186b90edc29e5b17e853da902b6ff22813bec1d357bc935836bfb1e56"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,6 +45,14 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==1.20.1"
+        },
+        "numpy-financial": {
+            "hashes": [
+                "sha256:bae534b357516f12258862d1f0181d911032d0467f215bfcd1c264b4da579047",
+                "sha256:f84341bc62b2485d5604a73d5fac7e91975b4b9cd5f4a5a9cf608902ea00cb40"
+            ],
+            "index": "pypi",
+            "version": "==1.0.0"
         },
         "pandas": {
             "hashes": [

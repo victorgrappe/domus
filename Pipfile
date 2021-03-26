@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pandas = "==1.2.3"
+numpy-financial = "==1.0.0"
 
 [dev-packages]
 
