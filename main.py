@@ -1,7 +1,7 @@
 
 import numpy_financial
 import pandas
-pandas.options.display.float_format = "{:.2f} €".format
+#pandas.options.display.float_format = "{:.2f} €".format
 
 
 def getFields():
@@ -40,15 +40,25 @@ def addHomesProjections(home_df):
     return home_df
 
 
+def getHomesStyled(home_df, html=False):
+    format_dict = {
+        'P_total': '${0:,.0f}',
+        'P_monthlyPayment': '{:.2%}',
+        'P_rentalYield': '{:.2%}',
+        'P_total_fin': '${0:,.2f}',
+    }
+    home_style = home_df.style.format(format_dict).background_gradient(subset=['P_total_fin'], cmap='BuGn')
+    home_style = home_style.render().split('\n')[:1000] if html else home_style
+    return home_style
 
 
-
-def summarize(df):
-    print(df)
-    print(df.dtypes)
+def runAll():
+    home_df = getHomes()
+    home_df = addHomesProjections(home_df=home_df)
+    return home_df
 
 
 if __name__ == '__main__':
-    home_df = getHomes()
-    home_df = addHomesProjections(home_df=home_df)
-    summarize(df=home_df)
+    home_df = runAll()
+    home_style = getHomesStyled(home_df=home_df, html=False)
+    print(home_df)

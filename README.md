@@ -8,6 +8,9 @@ Run
 ---
 ```sh
 source ".env"
+
+pipenv run jupyter lab
+# OR
 pipenv run python3 main.py
 ```
 
@@ -29,6 +32,8 @@ rm -f Pipfile Pipfile.lock
 pipenv install --python "${O_PYTHON_VERSION}"
 pipenv install "pandas==${O_PANDAS_VERSION}"
 pipenv install "numpy-financial==${O_NPFINANCIAL_VERSION}"
+pipenv install "jupyterlab==${O_JUPYTERLAB_VERSION}"
+pipenv install "matplotlib==${O_MATPLOTLIB_VERSION}"
 ```
 ```sh
 pipenv check

@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 pandas = "==1.2.3"
 numpy-financial = "==1.0.0"
+jupyterlab = "==3.0.12"
+matplotlib = "==3.4.0"
 
 [dev-packages]
 
