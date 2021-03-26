@@ -35,8 +35,12 @@ def getHomes():
 def addHomesProjections(home_df):
     home_df['P_total']          = home_df.apply(lambda home : home['I_price'] + home['I_notary'] + home['I_ppd'] + home['I_works'],                                             axis=1)
     home_df['P_total_fin']      = home_df.apply(lambda home : home['P_total'] - home['I_initial'],                                                                              axis=1)
-    home_df['P_monthlyPayment'] = home_df.apply(lambda home: numpy_financial.pmt(rate=home['I_rate']/12, nper=home['I_years']*12, pv=-home['P_total_fin'], fv=0, when='end'),   axis=1)
+    home_df['P_monthlyPayment'] = home_df.apply(lambda home : numpy_financial.pmt(rate=home['I_rate']/12, nper=home['I_years']*12, pv=-home['P_total_fin'], fv=0, when='end'),  axis=1)
+    home_df['P_rentalYield']    = home_df.apply(lambda home : 12 * home['I_rent'] / home['P_total'],                                                                            axis=1)
     return home_df
+
+
+
 
 
 def summarize(df):

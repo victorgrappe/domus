@@ -7,6 +7,7 @@ Financing and forecasting of a real estate purchase in France
 Run
 ---
 ```sh
+source ".env"
 pipenv run python3 main.py
 ```
 
