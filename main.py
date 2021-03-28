@@ -2,6 +2,7 @@
 import numpy_financial
 import pandas
 #pandas.options.display.float_format = "{:.2f} €".format
+from operator import attrgetter
 
 
 def getFields():
@@ -42,23 +43,53 @@ def addHomesProjections(home_df):
 
 def getHomesStyled(home_df, html=False):
     format_dict = {
-        'P_total': '${0:,.0f}',
+        'P_total':          '${0:,.0f}',
+        'P_total_fin':      '${0:,.2f}',
         'P_monthlyPayment': '{:.2%}',
-        'P_rentalYield': '{:.2%}',
-        'P_total_fin': '${0:,.2f}',
+        'P_rentalYield':    '{:.2%}',
     }
     home_style = home_df.style.format(format_dict).background_gradient(subset=['P_total_fin'], cmap='BuGn')
     home_style = home_style.render().split('\n')[:1000] if html else home_style
     return home_style
 
 
-def runAll():
-    home_df = getHomes()
-    home_df = addHomesProjections(home_df=home_df)
-    return home_df
+def getHomeSteps(home_d, months=30):
+    step_ds_date = pandas.date_range(
+        start=home_d['I_moveIn'],
+        periods=12*months,
+        freq='MS',
+        tz='utc',
+        normalize=True,
+        name='date',
+        closed=None
+    )
+    step_df = pandas.DataFrame(data=step_ds_date)
+    step_df['home'] = home_d['I_index']
+    step_df['month'] = step_df['date'].apply(lambda date: date.to_period('M') - step_ds_date[0].to_period('M') ).apply(attrgetter('n'))
+    step_df['year'] = step_df['month'] / 12
+    print(step_df.head(n=15))
+    print(step_df.tail(n=15))
+    return step_df
+
+
+def getHomesSteps(home_df):
+    step_dfl = []
+    for index, home_d in home_df.iterrows():
+        step_df = getHomeSteps(home_d)
+        step_dfl.append(step_df)
+    step_df = pandas.concat(step_dfl, axis=0)
+    return step_df
 
 
 if __name__ == '__main__':
-    home_df = runAll()
+    # 1. Get Homes
+    home_df = getHomes()
+    home_df = addHomesProjections(home_df=home_df)
     home_style = getHomesStyled(home_df=home_df, html=False)
     print(home_df)
+
+    # 2. Get Homes Steps
+    step_df = getHomesSteps(home_df)
+
+
+

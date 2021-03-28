@@ -9,9 +9,8 @@ Run
 ```sh
 source ".env"
 
-pipenv run jupyter lab
-# OR
 pipenv run python3 main.py
+pipenv run jupyter lab
 ```
 
 Setup
