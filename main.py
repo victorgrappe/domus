@@ -64,9 +64,11 @@ def getHomeSteps(home_d, months=30):
         closed=None
     )
     step_df = pandas.DataFrame(data=step_ds_date)
-    step_df['home'] = home_d['I_index']
-    step_df['month'] = step_df['date'].apply(lambda date: date.to_period('M') - step_ds_date[0].to_period('M') ).apply(attrgetter('n'))
-    step_df['year'] = step_df['month'] / 12
+    step_df['home']             = home_d['I_index']
+    step_df['month']            = step_df.apply(lambda step : step['date'].to_period('M')  - step_ds_date[0].to_period('M') ,               axis=1).apply(attrgetter('n'))
+    step_df['year']             = step_df.apply(lambda step : step['month'] / 12,                                                           axis=1)
+    step_df['value']            = step_df.apply(lambda step : home_d['I_price'] * (1 + step['year'] * home_d['I_priceValuationPerYear']),   axis=1)
+    step_df['finalBalance']     = step_df.apply(lambda step : numpy_financial.pv(rate=home_d['I_rate']/12, nper=12*(home_d['I_years'] - step['year']), pmt=-home_d['P_monthlyPayment']),   axis=1)
     print(step_df.head(n=15))
     print(step_df.tail(n=15))
     return step_df

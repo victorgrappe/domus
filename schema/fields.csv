@@ -3,6 +3,7 @@ index,key,label,type,unit,description
 2,I_name,Name,STRING,NAME,
 3,I_address,Address,STRING,ADDRESS,
 4,I_price,Price,DECIMAL_2,EUR,
+5,I_priceValuationPerYear,Price Valuation,DECIMAL_2,PERCENT,
 5,I_notary,Notary Fees,DECIMAL_2,EUR,
 6,I_ppd,PPP,DECIMAL_2,EUR,Privilège de Prèteur de Deniers
 7,I_works,Works,DECIMAL_2,EUR,
@@ -11,6 +12,7 @@ index,key,label,type,unit,description
 11,I_years,Years,INTEGER,YEAR,
 12,I_area,Aree,DECIMAL_2,m2,
 13,I_rent,Rent,DECIMAL_2,EUR,
+14,I_rentValuationPerYear,Rent Valuation,PERCENT,,
 14,I_propertyTax,Property Tax,DECIMAL_2,EUR,
 15,I_moveIn,Move in Date,DATETIME,DATETIME,
 16,P_total,Total Price,DECIMAL_2,EUR,
