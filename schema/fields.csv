@@ -1,14 +1,21 @@
 index,key,label,type,unit,description
-1,I_index,Index,INTEGER,,Unique Identifier
-2,I_name,Name,STRING,,
-3,I_address,Address,STRING,,
-3,I_price,Price,DECIMAL_2,EUR,
-4,I_notary,Notary Fees,DECIMAL_2,EUR,
-5,I_ppd,PPP,DECIMAL_2,EUR,Privilège de Prèteur de Deniers
-6,I_works,Works,DECIMAL_2,EUR,
-7,I_initial,,DECIMAL_2,EUR,Initial Contribution
-8,I_rate,Rate,DECIMAL_2,PERCENT,
-9,I_years,Years,INTEGER,YEAR,
-10,I_area,Aree,DECIMAL_2,m2,
-11,I_rent,Rent,DECIMAL_2,EUR,
-12,I_propertyTax,Property Tax,DECIMAL_2,EUR,
+1,I_index,Index,INTEGER,INDEX,Unique Identifier
+2,I_name,Name,STRING,NAME,
+3,I_address,Address,STRING,ADDRESS,
+4,I_price,Price,DECIMAL_2,EUR,
+5,I_priceValuationPerYear,Price Valuation,DECIMAL_2,PERCENT,
+5,I_notary,Notary Fees,DECIMAL_2,EUR,
+6,I_ppd,PPP,DECIMAL_2,EUR,Privilège de Prèteur de Deniers
+7,I_works,Works,DECIMAL_2,EUR,
+8,I_initial,Initial Money,DECIMAL_2,EUR,Initial Contribution
+10,I_rate,Rate,DECIMAL_2,PERCENT,
+11,I_years,Years,INTEGER,YEAR,
+12,I_area,Aree,DECIMAL_2,m2,
+13,I_rent,Rent,DECIMAL_2,EUR,
+14,I_rentValuationPerYear,Rent Valuation,PERCENT,,
+14,I_propertyTax,Property Tax,DECIMAL_2,EUR,
+15,I_moveIn,Move in Date,DATETIME,DATETIME,
+16,P_total,Total Price,DECIMAL_2,EUR,
+17,P_total_fin,Total to Finance,DECIMAL_2,EUR,
+18,P_monthlyPayment,Monthly Payment,DECIMAL_2,EUR,
+19,P_rentalYield,Rental Yield,DECIMAL_2,PERCENT,

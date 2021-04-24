@@ -1,2 +1,3 @@
-I_index,I_name,I_Address,I_price,I_notary,I_ppd,I_works,I_initial,I_rate,I_years,I_area,I_rent,I_propertyTax,I_moveIn
-1,La Maison du bonheur,34 rue de Paris,329400.00,16470.00,300.00,2000.00,12000.00,0.015,20,54,1225.00,1500.00,2021-03-20T18:44:17Z
+I_index,I_name,I_address,I_price,I_priceValuationPerYear,I_notary,I_ppd,I_works,I_initial,I_rate,I_years,I_area,I_rent,I_rentValuationPerYear,I_propertyTax,I_moveIn
+1,La Maison du bonheur,34 rue de Paris,329400.00,0.01,16470.00,300.00,2000.00,12000.00,0.015,20,54,1225.00,0.01,1500.00,2021-03-05T18:44:17Z
+2,Colloc,10 rue du Caire,1500000.00,0.02,0,0,30000,0,0.026,20,127,3200,0.02,3000,2021-07-17T18:44:17Z
