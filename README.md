@@ -7,9 +7,10 @@ Financing and forecasting of a real estate purchase in France
 Run
 ---
 ```sh
+cd "${HOME}/Library/Mobile Documents/com~apple~CloudDocs/O/APPS/domus"
 source ".env"
-
 pipenv run python3 main.py
+
 pipenv run jupyter lab
 ```
 

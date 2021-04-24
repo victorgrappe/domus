@@ -3,6 +3,8 @@ import numpy_financial
 import pandas
 #pandas.options.display.float_format = "{:.2f} €".format
 from operator import attrgetter
+import warnings
+warnings.filterwarnings('ignore')
 
 
 def getFields():
@@ -49,16 +51,16 @@ def getHomesStyled(home_df, html=False):
         'P_rentalYield':    '{:.2%}',
     }
     home_style = home_df.style.format(format_dict).background_gradient(subset=['P_total_fin'], cmap='BuGn')
-    home_style = home_style.render().split('\n')[:1000] if html else home_style
+    #home_style = home_style.render().split('\n')[:1000] if html else home_style
     return home_style
 
 
 def getHomeSteps(home_d, months=30):
     step_ds_date = pandas.date_range(
         start=home_d['I_moveIn'],
-        periods=12*months,
+        periods=12 * months,
         freq='MS',
-        tz='utc',
+        tz='UTC',
         normalize=True,
         name='date',
         closed=None
@@ -69,8 +71,9 @@ def getHomeSteps(home_d, months=30):
     step_df['year']             = step_df.apply(lambda step : step['month'] / 12,                                                           axis=1)
     step_df['value']            = step_df.apply(lambda step : home_d['I_price'] * (1 + step['year'] * home_d['I_priceValuationPerYear']),   axis=1)
     step_df['finalBalance']     = step_df.apply(lambda step : numpy_financial.pv(rate=home_d['I_rate']/12, nper=12*(home_d['I_years'] - step['year']), pmt=-home_d['P_monthlyPayment']),   axis=1)
-    print(step_df.head(n=15))
-    print(step_df.tail(n=15))
+    step_df['rentalIncome']     = step_df.apply(lambda step : home_d['I_rent'],                                                             axis=1)
+
+
     return step_df
 
 
@@ -83,6 +86,18 @@ def getHomesSteps(home_df):
     return step_df
 
 
+def getHomesStepsStyled(step_df, html=False):
+    format_dict = {
+        'P_total':          '${0:,.0f}',
+        'P_total_fin':      '${0:,.2f}',
+        'P_monthlyPayment': '{:.2%}',
+        'P_rentalYield':    '{:.2%}',
+    }
+    step_style = step_df.style.format(format_dict).background_gradient(subset=['P_total_fin'], cmap='BuGn')
+    #step_style = step_style.render().split('\n')[:1000] if html else step_style
+    return home_style
+
+
 if __name__ == '__main__':
     # 1. Get Homes
     home_df = getHomes()
@@ -92,6 +107,8 @@ if __name__ == '__main__':
 
     # 2. Get Homes Steps
     step_df = getHomesSteps(home_df)
+    print(step_df[step_df['home'] == 1].head(n=15))
+    print(step_df[step_df['home'] == 1].tail(n=15))
 
 
 
