@@ -10,9 +10,23 @@ Run
 cd "${HOME}/Library/Mobile Documents/com~apple~CloudDocs/O/APPS/domus"
 source ".env"
 pipenv run python3 main.py
+pipenv run python3 main_old.py
 
 pipenv run jupyter lab
 ```
+
+Model
+-----
+
+
+
+
+
+
+
+
+
+
 
 Setup
 -----
