@@ -14,7 +14,7 @@ def getFields():
 
 def getHomes():
     home_df = pandas.read_csv(
-        filepath_or_buffer='./schema/homes.csv',
+        filepath_or_buffer='schema/homes.csv',
         dtype={
             'I_index':      'int64',
             'I_name':       'object',
@@ -30,7 +30,7 @@ def getHomes():
             'I_rent':       'float64',
             'I_propertyTax':'float64',
         },
-        parse_dates=['I_moveIn',]
+        parse_dates=['moveIn',]
     )
     return home_df
 
