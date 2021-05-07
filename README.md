@@ -15,17 +15,6 @@ pipenv run python3 main_old.py
 pipenv run jupyter lab
 ```
 
-Model
------
-
-
-
-
-
-
-
-
-
 
 
 Setup

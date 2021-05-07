@@ -2,7 +2,7 @@
 import pandas
 import numpy_financial
 
-def getProp():
+def getProps():
     prop_df = pandas.read_csv(
         filepath_or_buffer='schema/properties.csv',
         dtype={
@@ -30,10 +30,17 @@ def getProp():
 
     return prop_df
 
+def getFlows(operatingStart):
+    print(operatingStart)
+    return operatingStart
+
+
+
 
 
 
 if __name__ == '__main__':
     # 1. Get Homes
-    prop_df = getProp()
+    prop_df = getProps()
+    flow_dfl = getFlows(prop_df[1])
     print(prop_df)
